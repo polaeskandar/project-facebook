@@ -1,12 +1,14 @@
 import axios from "axios";
+
 import router from "../../router";
+import { LOGIN_URL, REGISTER_URL } from "../../contants";
 
 const login = async (context, payload) => {
   const email = payload.email;
   const password = payload.password;
 
   try {
-    const response = await axios.post("http://127.0.0.1:8000/api/v1/auth/login", {
+    const response = await axios.post(LOGIN_URL, {
       email,
       password,
     });
@@ -28,7 +30,7 @@ const register = async (context, payload) => {
   console.log(name, email, password, password_confirmation);
 
   try {
-    const response = await axios.post("http://127.0.0.1:8000/api/v1/auth/register", {
+    const response = await axios.post(REGISTER_URL, {
       name,
       email,
       password,
@@ -43,17 +45,15 @@ const register = async (context, payload) => {
   }
 };
 
-const logout = async (context) => {
+const logout = (context) => {
   const token = JSON.parse(localStorage.getItem("token"));
   const authorizationToken = `Bearer ${token}`;
-
+  context.commit("removeUser", null);
+  context.commit("removeToken", null);
   router.push({ name: "home" });
 
   try {
-    await axios.post("http://127.0.0.1:8000/api/v1/auth/logout", {}, { headers: { Authorization: `Bearer ${authorizationToken}` } });
-
-    context.commit("removeUser", null);
-    context.commit("removeToken", null);
+    axios.post("http://127.0.0.1:8000/api/v1/auth/logout", {}, { headers: { Authorization: `Bearer ${authorizationToken}` } });
   } catch (error) {
     console.error(error);
   }

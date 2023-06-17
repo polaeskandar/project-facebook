@@ -21,7 +21,7 @@
       <router-link :to="registerLink">Don't have an account? Register one here!</router-link>
     </div>
 
-    <button type="submit" class="btn btn-primary btn-block w-100">Sign in</button>
+    <base-button type="submit" :loading="isLoading">Login</base-button>
   </form>
 </template>
 
@@ -31,14 +31,17 @@ export default {
     return {
       email: { value: null },
       password: { value: null },
+      isLoading: false,
     };
   },
   methods: {
-    login() {
-      this.$store.dispatch("auth/login", {
+    async login() {
+      this.isLoading = true;
+      await this.$store.dispatch("auth/login", {
         email: this.email.value,
         password: this.password.value,
       });
+      this.isLoading = false;
     },
   },
   computed: {

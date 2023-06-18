@@ -1,17 +1,17 @@
 export default {
-  setUser(state, payload) {
+  SET_USER(state, payload) {
     state.user = payload;
     localStorage.setItem("user", JSON.stringify(payload));
   },
-  setToken(state, payload) {
+  SET_TOKEN(state, payload) {
     state.token = payload;
     localStorage.setItem("token", JSON.stringify(payload));
   },
-  removeUser(state) {
+  REMOVE_USER(state) {
     state.user = null;
     localStorage.removeItem("user");
   },
-  removeToken(state) {
+  REMOVE_TOKEN(state) {
     state.token = null;
     localStorage.removeItem("token");
   },

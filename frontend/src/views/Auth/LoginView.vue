@@ -21,7 +21,7 @@
       <router-link :to="registerLink">Don't have an account? Register one here!</router-link>
     </div>
 
-    <base-button type="submit" :loading="isLoading">Login</base-button>
+    <BaseButton type="submit" :loading="isLoading">Login</BaseButton>
   </form>
 </template>
 

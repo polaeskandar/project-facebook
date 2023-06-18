@@ -1,8 +1,8 @@
 <template>
-  <ul class="navbar-nav gap-2 mb-2 mb-lg-0" v-if="user">
+  <ul class="navbar-nav gap-2 mb-2 mb-lg-0" v-if="getUser">
     <li class="nav-item dropdown me-1">
       <a class="nav-link dropdown-toggle d-flex align-items-center gap-2" href="#" role="button" data-bs-toggle="dropdown">
-        <span class="material-symbols-outlined">account_circle</span>{{ user.name }}
+        <span class="material-symbols-outlined">account_circle</span>{{ getUser.name }}
       </a>
       <ul class="dropdown-menu">
         <li>
@@ -18,6 +18,8 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   methods: {
     logout() {
@@ -25,11 +27,9 @@ export default {
     },
   },
   computed: {
+    ...mapGetters("auth", ["getUser"]),
     homeLink() {
       return { name: "home" };
-    },
-    user() {
-      return this.$store.getters["auth/user"];
     },
   },
 };

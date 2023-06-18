@@ -1,16 +1,16 @@
 <template>
   <main>
-    <div>Short cut</div>
-    <PostsList />
-    <div>Friends</div>
+    <div class="bg-white">Shortcuts</div>
+    <PostsContainer />
+    <div class="bg-white">Friends</div>
   </main>
 </template>
 
 <script>
-import PostsList from "../components/Posts/PostsList.vue";
+import PostsContainer from "../components/Posts/PostsContainer.vue";
 
 export default {
-  components: { PostsList },
+  components: { PostsContainer },
 };
 </script>
 
@@ -18,5 +18,7 @@ export default {
 main {
   display: grid;
   grid-template-columns: 1fr 3fr 1fr;
+  padding: 10px;
+  gap: 10px;
 }
 </style>

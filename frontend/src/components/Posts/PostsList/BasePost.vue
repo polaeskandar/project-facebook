@@ -1,6 +1,6 @@
 <template>
   <div class="post card" :id="postId">
-    <div class="card-body">Hello</div>
+    <div class="card-body" v-html="post.body" />
   </div>
 </template>
 

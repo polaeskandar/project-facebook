@@ -7,13 +7,13 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration {
   public function up() {
     Schema::table('posts', function (Blueprint $table) {
-      $table->timestamp('posted_on')->nullable();
+      $table->timestamp('schedule_on')->nullable();
     });
   }
 
   public function down() {
     Schema::table('posts', function (Blueprint $table) {
-      $table->dropColumn('posted_on');
+      $table->dropColumn('schedule_on');
     });
   }
 };

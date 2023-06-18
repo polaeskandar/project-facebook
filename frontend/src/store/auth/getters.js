@@ -1,11 +1,11 @@
 export default {
-  user(state) {
+  getUser(state) {
     return state.user;
   },
-  token(state) {
+  getToken(state) {
     return state.token;
   },
-  isAuthenticated(_, getters) {
-    return !!getters.user && !!getters.token;
+  getIsAuthenticated(_, getters) {
+    return !!getters.getUser && !!getters.getToken;
   },
 };

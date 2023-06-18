@@ -7,7 +7,7 @@
       </button>
       <div class="collapse navbar-collapse gap-2" id="navbarLinks">
         <NavbarLinks />
-        <NavbarDropdown v-if="isAuthenticated" />
+        <NavbarDropdown v-if="getIsAuthenticated" />
 
         <div class="form-check form-switch me-4 ms-auto">
           <input class="form-check-input" type="checkbox" role="switch" id="dark-mode-switch" />
@@ -24,20 +24,17 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 import NavbarLinks from "./NavbarLinks.vue";
 import NavbarDropdown from "./NavbarDropdown.vue";
 
 export default {
   components: { NavbarLinks, NavbarDropdown },
   computed: {
+    ...mapGetters("auth", ["getIsAuthenticated"]),
     homeLink() {
       return { name: "home" };
-    },
-    isAuthenticated() {
-      return this.$store.getters["auth/isAuthenticated"];
-    },
-    user() {
-      return this.$store.getters["auth/user"];
     },
   },
 };

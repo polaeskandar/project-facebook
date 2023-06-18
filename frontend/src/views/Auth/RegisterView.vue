@@ -33,7 +33,7 @@
     </div>
 
     <router-link :to="loginLink">Already have an account? Login here!</router-link>
-    <button type="submit" class="btn btn-primary btn-block w-100 mt-3">Sign up</button>
+    <BaseButton type="submit" class="btn btn-primary btn-block w-100 mt-3" :loading="isLoading">Register</BaseButton>
   </form>
 </template>
 
@@ -45,6 +45,7 @@ export default {
       email: { value: null },
       password: { value: null },
       passwordConfirmation: { value: null },
+      isLoading: false,
     };
   },
   computed: {
@@ -53,13 +54,15 @@ export default {
     },
   },
   methods: {
-    register() {
-      this.$store.dispatch("auth/register", {
+    async register() {
+      this.isLoading = true;
+      await this.$store.dispatch("auth/register", {
         name: this.name.value,
         email: this.email.value,
         password: this.password.value,
         passwordConfirmation: this.passwordConfirmation.value,
       });
+      this.isLoading = false;
     },
   },
 };

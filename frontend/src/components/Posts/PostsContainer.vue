@@ -6,14 +6,12 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
 import NewPost from "./NewPost/NewPost.vue";
 import PostsList from "./PostsList/PostsList.vue";
 
 export default {
   components: { NewPost, PostsList },
   computed: {
-    // ...mapGetters("auth", ["getUser"]),
     canCreatePosts() {
       const user = this.$store.getters["auth/getUser"];
       return user && user.email_verified_at;

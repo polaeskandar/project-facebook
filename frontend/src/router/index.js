@@ -37,12 +37,12 @@ const router = createRouter({
 });
 
 router.beforeEach((to, __, next) => {
-  if (to.meta.requiresAuth && !store.getters["auth/user"]) {
+  if (to.meta.requiresAuth && !store.getters["auth/getUser"]) {
     next({ name: "auth" });
     return;
   }
 
-  if (to.meta.requiresGuest && store.getters["auth/user"]) {
+  if (to.meta.requiresGuest && store.getters["auth/getUser"]) {
     next({ name: "home" });
     return;
   }

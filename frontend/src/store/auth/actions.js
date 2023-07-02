@@ -44,12 +44,12 @@ const register = async (context, payload) => {
 };
 
 const logout = (context) => {
-  context.commit("REMOVE_USER", null);
-  context.commit("REMOVE_TOKEN", null);
   router.push({ name: "home" });
 
   try {
     axios.post("http://127.0.0.1:8000/api/v1/auth/logout", {}, { headers: { Authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}` } });
+    context.commit("REMOVE_USER", null);
+    context.commit("REMOVE_TOKEN", null);
   } catch (error) {
     console.error(error);
   }

@@ -45,7 +45,6 @@ class PostsController extends Controller
   public function store(CreatePostRequest $request): JsonResponse
   {
     $this->authorize('create', Post::class);
-//    Gate::authorize('create', Post::class);
     $body = $request->validated('body');
     $scheduleOn = $request->validated('schedule_on');
 

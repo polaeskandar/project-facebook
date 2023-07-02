@@ -5,6 +5,7 @@ import AuthView from "../views/Auth/AuthView.vue";
 import LoginView from "../views/Auth/LoginView.vue";
 import RegisterView from "../views/Auth/RegisterView.vue";
 import ForgotPasswordView from "../views/Auth/ForgotPasswordView.vue";
+import PostView from "../views/Posts/PostView.vue";
 import NotFoundView from "../views/NotFoundView.vue";
 import store from "../store";
 
@@ -25,6 +26,7 @@ const router = createRouter({
         { path: "forgot-password", name: "auth.forgotPassword", component: ForgotPasswordView },
       ],
     },
+    { path: "/posts/:id", name: "posts.show", component: PostView },
     { path: "/:notFound(.*)", component: NotFoundView },
   ],
 

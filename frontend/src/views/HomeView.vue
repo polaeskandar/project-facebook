@@ -1,6 +1,8 @@
 <template>
   <main>
-    <div class="bg-white">Shortcuts</div>
+    <div class="bg-white">
+      <RouterLink to="/posts/1">Test</RouterLink>
+    </div>
     <PostsContainer />
     <div class="bg-white">Friends</div>
   </main>
